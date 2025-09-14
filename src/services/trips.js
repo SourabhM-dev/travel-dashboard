@@ -1,11 +1,20 @@
-import defaultTrips from '../data/trips.js';
+import defaultTrips, { TRIPS_VERSION } from '../data/trips.js';
+
 
 // localStorage key
-const KEY = "travel_trips_v1";
+const KEY = "travel_trips";
+const VERSION_KEY = `${KEY}_version`;
 
 // helpers
 function readStore() {
   try {
+        const currentVersion = localStorage.getItem(VERSION_KEY);
+    if (currentVersion !== String(TRIPS_VERSION)) {
+      localStorage.setItem(KEY, JSON.stringify(defaultTrips));
+      localStorage.setItem(VERSION_KEY, String(TRIPS_VERSION));
+      return [...defaultTrips];
+    }
+
     const raw = localStorage.getItem(KEY);
     if (!raw) {
       localStorage.setItem(KEY, JSON.stringify(defaultTrips));
@@ -20,6 +29,7 @@ function readStore() {
 
 function writeStore(arr) {
   localStorage.setItem(KEY, JSON.stringify(arr));
+    localStorage.setItem(VERSION_KEY, String(TRIPS_VERSION));
 }
 
 export async function listTrips() {

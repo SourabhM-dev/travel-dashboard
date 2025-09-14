@@ -36,12 +36,12 @@ export default function Trips() {
 
   return (
     <>
-      <main className="max-w-7xl mx-auto px-4 py-10">
+      <main className="max-w-7xl mx-auto px-4 py-10 bg-white rounded-lg shadow">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-semibold">Trips</h1>
-          <div className="flex gap-3">
-            <input value={query} onChange={(e)=> setQuery(e.target.value)} placeholder="Search trips..." className="px-3 py-2 border rounded" />
-            <select value={tag} onChange={(e)=> setTag(e.target.value)} className="px-3 py-2 border rounded">
+          <div className="flex gap-3 bg-white p-2 rounded-lg shadow">
+            <input value={query} onChange={(e)=> setQuery(e.target.value)} placeholder="Search trips..." className="px-3 py-2 border rounded-lg shadow-sm" />
+            <select value={tag} onChange={(e)=> setTag(e.target.value)} className="px-3 py-2 border rounded-lg shadow-sm">
               {tags.map((t)=> <option key={t} value={t}>{t}</option>)}
             </select>
           </div>

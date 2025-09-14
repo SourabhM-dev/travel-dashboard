@@ -3,10 +3,17 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
+  const doSearch = () => {
+  const q = search.trim();
+  window.location.href = q ? `/trips?q=${encodeURIComponent(q)}` : '/trips';
+  };
+
+
   return (
-    <header className="bg-white border-b">
+    <header className="bg-white/80 backdrop-blur shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div className="flex items-center gap-6">
           <button
@@ -25,20 +32,19 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center border rounded overflow-hidden">
+           <div className="hidden sm:flex items-center border rounded overflow-hidden bg-white">
             <input
               className="px-3 py-1 w-56 focus:outline-none"
               placeholder="Search trips, tags..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  const q = e.target.value.trim();
-                  if (q) window.location.href = `/trips?q=${encodeURIComponent(q)}`;
-                }
+                 if (e.key === 'Enter') doSearch();
               }}
             />
             <button
               className="px-3 py-2 bg-slate-50 text-slate-700 text-sm"
-              onClick={() => (window.location.href = '/trips')}
+               onClick={doSearch}
             >
               Search
             </button>

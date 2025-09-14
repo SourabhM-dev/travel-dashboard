@@ -44,7 +44,7 @@ export default function TripDetail() {
   };
 
   return (
-    <main className="max-w-4xl mx-auto p-6">
+    <main className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow">
       <img src={trip.image} alt={trip.title} className="w-full h-72 object-cover rounded-md mb-4" />
       <div className="flex items-start justify-between gap-6">
         <div className="flex-1">
@@ -57,7 +57,7 @@ export default function TripDetail() {
             </div>
             <div className="bg-slate-50 p-3 rounded">
               <div className="text-xs text-slate-500">Price</div>
-              <div className="font-bold">${trip.price}</div>
+              <div className="font-bold">₹{trip.price}</div>
             </div>
           </div>
         </div>

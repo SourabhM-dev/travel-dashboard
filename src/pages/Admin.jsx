@@ -50,7 +50,7 @@ export default function Admin() {
 
   return (
     <>
-      <main className="max-w-6xl mx-auto px-4 py-10">
+      <main className="max-w-6xl mx-auto px-4 py-10 bg-white rounded-lg shadow">
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Create / Edit trip</h2>
@@ -100,8 +100,8 @@ export default function Admin() {
                 <div key={t.id} className="bg-white p-3 rounded shadow flex items-center justify-between">
                   <div>
                     <div className="font-medium">{t.title}</div>
-                    <div className="text-sm text-slate-500">${t.price} • {t.duration} days</div>
-                  </div>
+                   <div className="text-sm text-slate-500">₹{t.price} • {t.duration} days</div>
+                </div>
                   <div className="flex gap-2">
                     <button onClick={()=> fillForm(t)} className="px-3 py-1 border rounded">Edit</button>
                     <button onClick={()=> remove(t.id)} className="px-3 py-1 border rounded text-red-600">Delete</button>

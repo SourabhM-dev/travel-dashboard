@@ -1,3 +1,5 @@
+export const TRIPS_VERSION = 2;
+
 const trips = [
   {
     id: 'tokyo-1',
@@ -55,5 +57,6 @@ const trips = [
     image: '/images/Mumbai.jpg'
   }
 ];
+
 
 export default trips;
